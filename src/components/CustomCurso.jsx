@@ -18,7 +18,7 @@ const CustomCurso = () => {
         transform: `translate(${position.x - 40}px, ${position.y - 40}px)`,
       }}
     >
-      <div className="w-20 h-20 rounded-full bg-white blur-2xl opacity-80" />
+      <div className="w-20 h-20 rounded-full bg-white blur-2xl opacity-100" />
     </div>
   );
 };
