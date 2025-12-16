@@ -13,7 +13,6 @@ import CustomCursor from './components/CustomCurso.jsx'
 const App = () => {
   return (
     <div className='relative gradient text-white'>
-      <ParticalBackground />
       <CustomCursor />
 
       <Navbar />

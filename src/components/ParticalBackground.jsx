@@ -40,7 +40,7 @@ const ParticalBackground = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const colors = ["rgba(255,255,255,0.7)"];
-    const particleCount = 111;
+    const particleCount = 100;
     let particles = [];
 
     const createParticles = () => {
