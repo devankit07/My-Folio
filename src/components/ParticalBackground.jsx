@@ -1,35 +1,28 @@
 import { useEffect, useRef } from "react";
 
-class Particle {
-  constructor(canvas, colors) {
+class OrbitalNode {
+  constructor(canvas) {
     this.canvas = canvas;
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.radius = Math.random() * 2 + 1;
-    this.color = colors[Math.floor(Math.random() * colors.length)];
-    this.speedx = (Math.random() - 0.5) * 0.5;
-    this.speedy = (Math.random() - 0.5) * 0.5;
-  }
-
-  draw(ctx) {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.shadowBlur = 11;
-    ctx.shadowColor = this.color;
-    ctx.fillStyle = this.color;
-    ctx.fill();
+    this.centerX = canvas.width / 2;
+    this.centerY = canvas.height / 2;
+    this.angle = Math.random() * Math.PI * 2;
+    this.radius = Math.random() * Math.min(canvas.width, canvas.height) * 0.45;
+    this.speed = Math.random() * 0.0006 + 0.0003;
+    this.size = Math.random() * 2 + 1;
   }
 
   update(ctx) {
-    this.x += this.speedx;
-    this.y += this.speedy;
+    const x = this.centerX + Math.cos(this.angle) * this.radius;
+    const y = this.centerY + Math.sin(this.angle) * this.radius;
 
-    if (this.x < 0) this.x = this.canvas.width;
-    if (this.x > this.canvas.width) this.x = 0;
-    if (this.y < 0) this.y = this.canvas.height;
-    if (this.y > this.canvas.height) this.y = 0;
+    ctx.beginPath();
+    ctx.fillStyle = "rgba(180, 200, 255, 0.7)";
+    ctx.shadowBlur = 12;
+    ctx.shadowColor = "rgba(120, 160, 255, 0.6)";
+    ctx.arc(x, y, this.size, 0, Math.PI * 2);
+    ctx.fill();
 
-    this.draw(ctx);
+    this.angle += this.speed;
   }
 }
 
@@ -39,14 +32,13 @@ const ParticalBackground = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    const colors = ["rgba(255,255,255,0.7)"];
-    const particleCount = 100;
     let particles = [];
+    const PARTICLE_COUNT = 90;
 
     const createParticles = () => {
       particles = [];
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle(canvas, colors));
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push(new OrbitalNode(canvas));
       }
     };
 
@@ -59,16 +51,17 @@ const ParticalBackground = () => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    let animationID;
+    let animationId;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach((p) => p.update(ctx));
-      animationID = requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     };
+
     animate();
 
     return () => {
-      cancelAnimationFrame(animationID);
+      cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resizeCanvas);
     };
   }, []);
@@ -76,8 +69,8 @@ const ParticalBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-    ></canvas>
+      className="fixed inset-0 w-full h-full pointer-events-none z-0"
+    />
   );
 };
 
