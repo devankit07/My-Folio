@@ -33,7 +33,7 @@ const ParticalBackground = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     let particles = [];
-    const PARTICLE_COUNT = 90;
+    const PARTICLE_COUNT = 145;
 
     const createParticles = () => {
       particles = [];
