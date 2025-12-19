@@ -67,10 +67,8 @@ const Navbar = () => {
         }`}
       >
         <div className="flex items-center space-x-2">
-          <img src={logo} alt="logo" className="w-8 h-8" />
-          <div className="text-2xl font-bold text-white hidden sm:block">
-            Ankit
-          </div>
+          <img src={logo} alt="logo" className="w-14 h-14" />
+          
         </div>
 
         <div className="block lg:absolute lg:left-1/2 lg:-translate-x-1/2">
