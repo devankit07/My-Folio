@@ -74,7 +74,7 @@ const Home = () => {
       </div>
       <div className="relative z-10 h-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2">
         <div className="flex flex-col justify-center text-center lg:text-left">
-          <div className="max-w-[48rem]">
+          <div className="max-w-48rem">
             <motion.div
               className="mb-4 text-2xl md:text-3xl lg:text-4xl font-semibold text-transparent bg-clip-text bg-linear-to-r from-[#9efcff] via-[#a78bfa] to-[#22d3ee]"
               initial={{ opacity: 0, y: 16 }}
@@ -82,7 +82,7 @@ const Home = () => {
               transition={{ duration: 0.6 }}
             >
               {roles[index].substring(0, subindex)}
-              <span className="inline-block w-[2px] h-[1em] ml-1 bg-white animate-pulse" />
+              <span className="inline-block w-0.5 h-[1em] ml-1 bg-white animate-pulse" />
             </motion.div>
             <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold"

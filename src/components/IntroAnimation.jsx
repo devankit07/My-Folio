@@ -4,16 +4,13 @@ import  { useEffect, useMemo, useState } from "react";
 
 const IntroAnimation = ({ onFinish }) => {
   const greetings = useMemo(() => [
-    "Welcome",   "Bienvenido",              
-    "Bienvenue",               
+    "Welcome",                             
     "Willkommen",              
     "Benvenuto",               
     "ようこそ",                
     "欢迎",
     "환영합니다",               
     "أهلاً وسهلاً",             
-    "Добро пожаловать",       
-    "Bem-vindo", 
     "स्वागत है",             
   ], []);
 
