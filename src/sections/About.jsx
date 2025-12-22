@@ -37,7 +37,7 @@ const About = () => {
           viewport={{ once: true, amount: 0.4 }}
         >
           <motion.div
-            className="relative w-[160px] h-[160px] md:w-[200px] md:h-[200px] rounded-2xl overflow-hidden shadow-2xl bg-linear-to-r from-[#1cd8d2]/20 to-[#302b63]/20 border-[#1cd8d2]/25"
+            className="relative w-40 h-40 md:w-[200px] md:h-[200px] rounded-2xl overflow-hidden shadow-2xl bg-linear-to-r from-[#1cd8d2]/20 to-[#302b63]/20 border-[#1cd8d2]/25"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 200, damping: 18 }}
           >
@@ -45,7 +45,7 @@ const About = () => {
           </motion.div>
 
           <div className="flex-1 flex flex-col justify-center text-center md:text-left">
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#1cd8d2]">
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-linear-to-r from-[#1cd8d2] via-[#00bf8f] to-[#1cd8d2]">
               Ankit Rathor
             </h2>
             <p className="mt-2 text-lg sm:text-xl text-white/90 font-semibold">
