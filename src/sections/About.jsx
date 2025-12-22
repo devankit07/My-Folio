@@ -68,9 +68,9 @@ const About = () => {
                   transition={{ delay: 0.05 * i, duration: 0.4 }}
                   viewport={{ once: true, amount: 0.3 }}
                 >
-                  <div className="text-sm text-gray-400">
-                    <div className="text-base font-semibold">{item.value}</div>
-                    {item.label}
+                  <div className="text-sm text-gray-300">
+                    <div className="text-base font-semibold">{item.label}</div>
+                    {item.value}
                   </div>
                 </motion.div>
               ))}
