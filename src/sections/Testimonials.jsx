@@ -48,7 +48,7 @@ const Testimonials = () => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        What People Say
+        What Our Clients Say
       </motion.h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-6xl w-full">
