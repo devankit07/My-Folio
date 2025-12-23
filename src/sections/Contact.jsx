@@ -44,11 +44,11 @@ const Contact = () => {
     setstatus("sending");
     try {
       await emailjs.send(
-        SERVICEID,
-        TEMPLATEID,
-        { ...formdata, from_name: formdata.name, reply_to: formdata.email },
-        PUBLICKEY
-      );
+  SERVICEID,
+  TEMPLATEID,
+  { ...formdata, from_name: formdata.name, reply_to: formdata.email },
+  PUBLICKEY
+);
 
       setstatus("success");
       setformdata({
@@ -60,7 +60,6 @@ const Contact = () => {
       });
     } catch (err) {
       console.log("Emailjs Error", err);
-
       setstatus("error");
     }
   };
@@ -236,7 +235,9 @@ const Contact = () => {
           </form>
         </motion.div>
       </div>
+      
     </section>
+    
   );
 };
 
