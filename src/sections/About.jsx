@@ -1,4 +1,4 @@
-import { motion, spring } from "framer-motion";
+import { motion } from "framer-motion";
 import p from "../assets/boy.jpg";
 
 const About = () => {
@@ -23,7 +23,7 @@ const About = () => {
         {glows.map((c, i) => (
           <div
             key={i}
-            className={`absolute rounded-full bg-linear-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2] animate-pulse ${c}`}
+            className={`absolute rounded-full bg-linear-to-r from-[#000428] via-[#004e92] to-[#00c6ff] animate-pulse ${c}`}
           />
         ))}
       </div>
@@ -37,7 +37,7 @@ const About = () => {
           viewport={{ once: true, amount: 0.4 }}
         >
           <motion.div
-            className="relative w-40 h-40 md:w-[200px] md:h-[200px] rounded-2xl overflow-hidden shadow-2xl bg-linear-to-r from-[#1cd8d2]/20 to-[#302b63]/20 border-[#1cd8d2]/25"
+            className="relative w-40 h-40 md:w-[200px] md:h-[200px] rounded-2xl overflow-hidden shadow-2xl bg-linear-to-r from-[#7dd3fc]/20 via-[#a78bfa]/20 to-[#22d3ee]/20 border border-white/20"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 200, damping: 18 }}
           >
@@ -45,13 +45,13 @@ const About = () => {
           </motion.div>
 
           <div className="flex-1 flex flex-col justify-center text-center md:text-left">
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-linear-to-r from-[#1cd8d2] via-[#00bf8f] to-[#1cd8d2]">
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-linear-to-r from-[#7dd3fc] via-[#a78bfa] to-[#22d3ee]">
               Ankit Rathor
             </h2>
-            <p className="mt-2 text-lg sm:text-xl text-white/90 font-semibold">
+            <p className="mt-2 text-lg sm:text-xl text-gray-300 font-semibold">
               Full Stack Developer
             </p>
-            <p className="mt-4 text-gray-300 leading-relaxed text-base sm:text-lg md:max-w-3xl">
+            <p className="mt-4 text-gray-400 leading-relaxed text-base sm:text-lg md:max-w-3xl">
               I’m a passionate Web Developer with a strong foundation in HTML,
               CSS, JavaScript, and modern frameworks. I enjoy building clean,
               responsive, and user-friendly web applications. Always eager to
@@ -63,10 +63,6 @@ const About = () => {
                 <motion.div
                   key={i}
                   className="rounded-xl border border-white/10 bg-white/5 px-4 pt-3 text-center"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.05 * i, duration: 0.4 }}
-                  viewport={{ once: true, amount: 0.3 }}
                 >
                   <div className="text-sm text-gray-300">
                     <div className="text-base font-semibold">{item.label}</div>
@@ -79,35 +75,18 @@ const About = () => {
             <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
               <a
                 href="#Project"
-                className="inline-flex items-center justify-center rounded-lg bg-white text-black font-semibold px-5 py-3 hover:bg-gray-200 transition"
+                className="inline-flex items-center justify-center rounded-lg text-white font-semibold px-5 py-3 bg-linear-to-r from-[#7dd3fc] via-[#a78bfa] to-[#22d3ee]"
               >
                 View Project
               </a>
               <a
                 href="#Contact"
-                className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white px-5 py-3 hover:bg-white/20 transition"
+                className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white px-5 py-3"
               >
                 Get in Touch
               </a>
             </div>
           </div>
-        </motion.div>
-
-        <motion.div
-          className="text-center md:text-left"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.4 }}
-        >
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">About Me</h3>
-          <p className="text-gray-300 leading-relaxed text-base sm:text-lg">
-            "Passionate web developer skilled in building responsive and
-            interactive websites using modern technologies."
-          </p>
-          <p className="mt-4 text-gray-400 text-base sm:text-lg">
-            "Building clean, efficient, and user-friendly websites."
-          </p>
         </motion.div>
       </div>
     </section>
