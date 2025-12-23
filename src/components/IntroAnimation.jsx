@@ -10,7 +10,6 @@ const IntroAnimation = ({ onFinish }) => {
       "ようこそ",
       "欢迎",
       "환영합니다",
-      "أهلاً وسهلاً",
       "स्वागत है",
       "Bienvenue",
       "Bienvenido",
@@ -26,10 +25,10 @@ const IntroAnimation = ({ onFinish }) => {
 
   useEffect(() => {
     if (index < greetings.length - 1) {
-      const id = setTimeout(() => setIndex((i) => i + 1), 250);
+      const id = setTimeout(() => setIndex((i) => i + 1), 200);
       return () => clearTimeout(id);
     } else {
-      const t = setTimeout(() => setVisible(false), 500);
+      const t = setTimeout(() => setVisible(false), 800);
       return () => clearTimeout(t);
     }
   }, [index, greetings.length]);
