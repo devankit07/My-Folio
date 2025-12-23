@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import OverlayMenu from "./OverlayMenu";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo1.png";
 import { TfiMenu } from "react-icons/tfi";
 
 
