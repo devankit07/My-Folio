@@ -1,28 +1,35 @@
 import { AnimatePresence, motion } from "framer-motion";
-import  { useEffect, useMemo, useState } from "react";
-
+import { useEffect, useMemo, useState } from "react";
 
 const IntroAnimation = ({ onFinish }) => {
-  const greetings = useMemo(() => [
-    "Welcome",                             
-    "Willkommen",              
-    "Benvenuto",               
-    "ようこそ",                
-    "欢迎",
-    "환영합니다",               
-    "أهلاً وسهلاً",             
-    "स्वागत है",             
-  ], []);
+  const greetings = useMemo(
+    () => [
+      "Welcome",
+      "Willkommen",
+      "Benvenuto",
+      "ようこそ",
+      "欢迎",
+      "환영합니다",
+      "أهلاً وسهلاً",
+      "स्वागत है",
+      "Bienvenue",
+      "Bienvenido",
+      "Добро пожаловать",
+      "स्वागतम्",
+      "Namaste",
+    ],
+    []
+  );
 
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (index < greetings.length - 1) {
-      const id = setTimeout(() => setIndex(i => i + 1), 250);
+      const id = setTimeout(() => setIndex((i) => i + 1), 250);
       return () => clearTimeout(id);
     } else {
-      const t = setTimeout(() => setVisible(false), 800);
+      const t = setTimeout(() => setVisible(false), 500);
       return () => clearTimeout(t);
     }
   }, [index, greetings.length]);
