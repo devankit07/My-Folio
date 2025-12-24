@@ -13,7 +13,6 @@ const IntroAnimation = ({ onFinish }) => {
       "स्वागत है",
       "Bienvenue",
       "Bienvenido",
-      "Добро пожаловать",
       "स्वागतम्",
       "Namaste",
     ],
