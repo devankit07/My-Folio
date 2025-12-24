@@ -1,8 +1,7 @@
-import { useMemo, useEffect, useState } from "react";
+import { useMemo, useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import ParticalBackground from "../components/ParticalBackground";
-
 
 const socials = [
   {
@@ -28,7 +27,9 @@ const glowVariants = {
   tap: { scale: 0.95 },
 };
 
-const Home = () => {
+const Home = ({ homeRef }) => {
+  
+
   const roles = useMemo(
     () => [
       "Software Developer",
@@ -66,7 +67,10 @@ const Home = () => {
   }, [subindex, deleting, index, roles]);
 
   return (
-    <section className="relative w-full h-screen bg-black overflow-hidden">
+    <section
+      ref={homeRef}
+      className="relative w-full h-screen bg-black overflow-hidden"
+    >
       <ParticalBackground />
       <div className="absolute inset-0 overflow-hidden ">
         <div className="absolute -top-32 -left-32 w-[70vw] sm:w-[50vw] md:w-[40vw] h-[70vw] sm:h-[50vw] md:h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-linear-to-r from-[#000428] via-[#004e92] to-[#00c6ff] opacity-30 mix-blend-screen blur-[120px] animate-pulse" />
