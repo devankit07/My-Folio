@@ -2,7 +2,7 @@ import { useState } from "react";
 import ParticalBackground from "../components/ParticalBackground";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
-import Astra from "../assets/Astra.png";
+
 
 const SERVICEID = import.meta.env.VITE_SERVICE_ID;
 const TEMPLATEID = import.meta.env.VITE_TEMPLATE_ID;
@@ -79,7 +79,7 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.img
-            src={Astra}
+            src="/images/Astra.png"
             alt="Contact"
             className="w-72 md:w-140 rounded-2xl shadow-lg object-cover"
             animate={{ y: [0, -10, 0] }}

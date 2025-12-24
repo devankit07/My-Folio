@@ -1,63 +1,60 @@
 import { useEffect, useRef, useState } from "react";
 import OverlayMenu from "./OverlayMenu";
-import logo from "../assets/logo1.png";
 import { TfiMenu } from "react-icons/tfi";
-
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [visible, setVisible] = useState(true);
-  const[forcevisible,setForceVisible]=useState(false);
+  const [forcevisible, setForceVisible] = useState(false);
 
   const lastscolly = useRef(0);
-  const timeout =  useRef(null);
-
-
-  useEffect(()=>{
-    const homesection = document.querySelector('#Home');
-    const observer = new IntersectionObserver(
-      ([entry]) =>{
-        if(entry.isIntersecting){
-          setForceVisible(true)
-          setVisible(true);
-        }else{
-          setForceVisible(false);
-        }
-      },{threshold:0.1}
-    )
-    if(homesection) observer.observe(homesection);
-    return ()=>{
-      if(homesection)observer.unobserve(homesection);
-    }
-
-  },[])
+  const timeout = useRef(null);
 
   useEffect(() => {
-    const handleScroll = ()=>{
-      if(forcevisible){
+    const homesection = document.querySelector("#Home");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setForceVisible(true);
+          setVisible(true);
+        } else {
+          setForceVisible(false);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (homesection) observer.observe(homesection);
+    return () => {
+      if (homesection) observer.unobserve(homesection);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (forcevisible) {
         setVisible(true);
-        return
+        return;
       }
       const currentScrollY = window.scrollY;
-      if(currentScrollY>lastscolly.current){
-        setVisible(false)
-      }else{
+      if (currentScrollY > lastscolly.current) {
+        setVisible(false);
+      } else {
         setVisible(true);
 
-        if(timeout.current) clearTimeout(timeout.current);
-        timeout.current = setTimeout(()=>{
-          setVisible(false)
-        },3000)
+        if (timeout.current) clearTimeout(timeout.current);
+        timeout.current = setTimeout(() => {
+          setVisible(false);
+        }, 3000);
       }
-      lastscolly.current =currentScrollY;
-    }
-    window.addEventListener("scroll",handleScroll,{passive:true});
+      lastscolly.current = currentScrollY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return()=>{
-      window.removeEventListener("scroll",handleScroll)
-      if(timeout.current) clearTimeout(timeout.current);
-    }
-  },[forcevisible])
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (timeout.current) clearTimeout(timeout.current);
+    };
+  }, [forcevisible]);
 
   return (
     <>
@@ -67,8 +64,7 @@ const Navbar = () => {
         }`}
       >
         <div className="flex items-center space-x-2">
-          <img src={logo} alt="logo" className="w-14 h-14" />
-          
+          <img src="/images/logo1.png" alt="logo" className="w-15 h-15" />
         </div>
 
         <div className="block lg:absolute lg:left-1/2 lg:-translate-x-1/2">

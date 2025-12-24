@@ -2,7 +2,7 @@ import { useMemo, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import ParticalBackground from "../components/ParticalBackground";
-import avator from "../assets/avator.png";
+
 
 const socials = [
   {
@@ -117,7 +117,7 @@ const Home = () => {
                 View Work
               </a>
               <a
-                href="/Resume.pdf"
+                href="/dashrath.resume.pdf"
                 download
                 className="px-7 py-3 rounded-full text-lg font-medium text-white bg-white/10 border border-white/20 hover:scale-105 transition"
               >
@@ -146,7 +146,7 @@ const Home = () => {
         </div>
         <div className="relative hidden lg:block">
           <motion.img
-            src={avator}
+            src="/images/avator.png"
             alt="Ankit Rathor"
             className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none drop-shadow-[0_0_35px_rgba(125,211,252,0.35)]"
             style={{

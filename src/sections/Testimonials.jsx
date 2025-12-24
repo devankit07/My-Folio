@@ -1,7 +1,3 @@
-import m1 from "../assets/m1.png";
-import w1 from "../assets/w1.png";
-import m2 from "../assets/m2.png";
-import w2 from "../assets/w2.png";
 import { motion } from "framer-motion";
 
 const testimonials = [
@@ -10,28 +6,28 @@ const testimonials = [
     role: "Frontend Developer",
     review:
       "Working with Ankit was a great experience. Clean UI, smooth animations, and solid code quality.",
-    img: m1,
+    img: "/images/m1.png",
   },
   {
     name: "Sneha Verma",
     role: "UI/UX Designer",
     review:
       "Very detail-oriented developer. Understands design systems well and delivers pixel-perfect results.",
-    img: w1,
+    img: "/images/w1.png",
   },
   {
     name: "Aman Gupta",
     role: "Startup Founder",
     review:
       "Ankit built our website exactly as we envisioned. Performance and responsiveness were top-notch.",
-    img: m2,
+    img: "/images/m2.png",
   },
   {
     name: "Neha Singh",
     role: "Product Manager",
     review:
       "Professional, reliable, and quick to iterate. Communication and execution were excellent.",
-    img: w2,
+    img: "/images/w2.png",
   },
 ];
 

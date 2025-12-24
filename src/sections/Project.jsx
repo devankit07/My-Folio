@@ -1,10 +1,4 @@
 import { useEffect, useRef, useState, useMemo } from "react";
-import img1 from "../assets/img1.jpg";
-import img2 from "../assets/img2.jpg";
-import img3 from "../assets/img3.jpg";
-import photo1 from "../assets/photo1.jpg";
-import photo2 from "../assets/photo2.png";
-import photo3 from "../assets/photo3.png";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
 const useMobile = (query = "(max-width: 639px)") => {
@@ -39,19 +33,19 @@ const Project = () => {
         title: "NK Studio",
         link: "https://www.nk.studio/",
         bgColor: "#0d4d3d",
-        image: isMobile ? photo1 : img1,
+        image: isMobile ? "/images/photo1.jpg" : "/images/img1.jpg",
       },
       {
         title: "Gamily",
         link: "https://gamilyapp.com/",
         bgColor: "#3884d3",
-        image: isMobile ? photo2 : img2,
+        image: isMobile ? "/images/photo2.jpg" : "/images/img2.jpg",
       },
       {
         title: "Hungry Tiger",
         link: "https://www.eathungrytiger.com/",
         bgColor: "#dc9317",
-        image: isMobile ? photo3 : img3,
+        image: isMobile ? "/images/photo3.jpg" : "/images/img3.jpg",
       },
     ],
     [isMobile]
