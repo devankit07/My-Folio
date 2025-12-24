@@ -141,7 +141,7 @@ const Project = () => {
             href={activeProject.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-6 py-3 font-semibold rounded-lg bg-white text-black hover:bg-gray-300 transition-all"
+            className="inline-block px-6 py-3 font-semibold rounded-lg bg-white text-black hover:bg-gray-300 transition-all mt-2"
             aria-label={`View ${activeProject.title}`}
           >
             View Project
