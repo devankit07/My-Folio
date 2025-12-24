@@ -73,13 +73,13 @@ const About = () => {
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
               <a
-                href="#Project"
+                href="#project"
                 className="inline-flex items-center justify-center rounded-lg text-white font-semibold px-5 py-3 bg-linear-to-r from-[#7dd3fc] via-[#a78bfa] to-[#22d3ee]"
               >
                 View Project
               </a>
               <a
-                href="#Contact"
+                href="#contact"
                 className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white px-5 py-3"
               >
                 Get in Touch
