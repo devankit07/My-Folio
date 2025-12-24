@@ -79,7 +79,7 @@ const Navbar = () => {
 
         <div className="hidden lg:block">
           <a
-            href="#Contact"
+            href="#contact"
             className="bg-linear-to-r from-[#7dd3fc] via-[#a78bfa] to-[#22d3ee] text-white px-5 py-2 rounded-full font-medium shadow-lg hover:opacity-90 transition-opacity duration-300"
           >
             Reach Out
