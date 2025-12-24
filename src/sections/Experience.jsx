@@ -31,7 +31,7 @@ function ExperienceItem({ exp, idx, start, end, scrollYProgress, layout }) {
 
   if (layout === "mobile") {
     return (
-      <div className="relative flex items-start">
+      <div  className="relative flex items-start">
         <motion.div
           className="absolute left-0 w-6 h-6 rounded-full bg-white z-20"
           style={{ scale: progress, opacity }}
@@ -59,8 +59,7 @@ function ExperienceItem({ exp, idx, start, end, scrollYProgress, layout }) {
   const isTop = idx % 2 === 0;
 
   return (
-    <div className="relative flex-1 flex justify-center">
-      {/* Circle */}
+    <section  className="relative flex-1 flex justify-center">
       <motion.div
         className="absolute top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white z-20"
         style={{ scale: progress, opacity }}
@@ -85,7 +84,7 @@ function ExperienceItem({ exp, idx, start, end, scrollYProgress, layout }) {
         </p>
         <p className="text-sm text-gray-300 mt-2">{exp.description}</p>
       </motion.article>
-    </div>
+    </section>
   );
 }
 
@@ -117,7 +116,7 @@ const Experience = () => {
   const lineSize = useTransform(scrollYProgress, (v) => `${v * 100}%`);
 
   return (
-    <section id="Experience" className="relative bg-black text-white">
+    <section id="experience" className="relative bg-black text-white">
       <div
         ref={sceneRef}
         style={{ height: `${sceneHeightVh}vh`, minHeight: "120vh" }}
