@@ -33,19 +33,19 @@ const Project = () => {
         title: "NK Studio",
         link: "https://www.nk.studio/",
         bgColor: "#0d4d3d",
-        image: isMobile ? "/images/photo1.jpg" : "/images/img1.jpg",
+        image: isMobile ? "/images/photo1.png" : "/images/img1.jpg",
       },
       {
         title: "Gamily",
         link: "https://gamilyapp.com/",
         bgColor: "#3884d3",
-        image: isMobile ? "/images/photo2.jpg" : "/images/img2.jpg",
+        image: isMobile ? "/images/photo2.png" : "/images/img2.jpg",
       },
       {
         title: "Hungry Tiger",
         link: "https://www.eathungrytiger.com/",
         bgColor: "#dc9317",
-        image: isMobile ? "/images/photo3.jpg" : "/images/img3.jpg",
+        image: isMobile ? "/images/photo3.png" : "/images/img3.jpg",
       },
     ],
     [isMobile]
