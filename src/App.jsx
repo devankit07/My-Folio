@@ -14,7 +14,7 @@ import ScrollToTopButton from './components/ScrollToTopButton.jsx';
 
 const App = () => {
   const [introDone, setIntroDone] = React.useState(false);
-  const homeRef = useRef(null); // ← Home section ref
+  const homeRef = useRef(null); 
 
   return (
     <>
