@@ -136,12 +136,12 @@ const Project = () => {
           ))}
         </div>
 
-        <div className={`absolute ${isMobile ? "bottom-20" : "bottom-10"}`}>
+        <div className={`absolute ${isMobile ? "bottom-10" : "bottom-10"}`}>
           <a
             href={activeProject.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-6 py-3 font-semibold rounded-lg bg-white text-black hover:bg-gray-300 transition-all mt-2"
+            className="inline-block px-6 py-3 font-semibold rounded-lg bg-white text-black hover:bg-gray-300 transition-all "
             aria-label={`View ${activeProject.title}`}
           >
             View Project
