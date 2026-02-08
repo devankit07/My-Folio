@@ -30,16 +30,16 @@ const Project = () => {
   const projects = useMemo(
     () => [
       {
-        title: "NK Studio",
-        link: "https://www.nk.studio/",
+        title: "Work-Hire",
+        link: "https://work-hire.vercel.app/",
         bgColor: "#0d4d3d",
-        image: isMobile ? "/images/photo1.png" : "/images/img1.jpg",
+        image: isMobile ? "/images/photo1.png" : "/images/img1.png",
       },
       {
-        title: "Gamily",
-        link: "https://gamilyapp.com/",
+        title: "Mini Mac-OS",
+        link: "https://mac-os-gold.vercel.app/",
         bgColor: "#3884d3",
-        image: isMobile ? "/images/photo2.png" : "/images/img2.jpg",
+        image: isMobile ? "/images/photo2.png" : "/images/img2.png",
       },
       {
         title: "Hungry Tiger",

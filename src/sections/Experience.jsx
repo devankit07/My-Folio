@@ -1,28 +1,31 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-const experiences = [
+const experiences = 
+  [
   {
-    role: "Web Developer",
-    company: "Brain Mentors",
-    duration: "2022",
+    role: "Networking & Internet Student",
+    company: "Earth Institute",
+    duration: "Nov 2023 - Jan 2024",
     description:
-      "Built high-performance apps, integrated AI features, improved engagement by 10%.",
+      "Completed a 3-month basic course on Networking and Internet fundamentals.",
   },
   {
-    role: "Web Developer Intern",
-    company: "Mobisoft Technologies",
-    duration: "2022 - 2023",
-    description: "Gained hands-on web development experience.",
+    role: "Full Stack Development Student",
+    company: "GeeksforGeeks (GFG)",
+    duration: "Dec 2024 - Mar 2025",
+    description:
+      "Completed a 3-4 month Full Stack Development course covering frontend and backend technologies.",
   },
   {
-    role: "Graduate Engineer",
-    company: "HCL Technologies",
-    duration: "2024 - 2025",
+    role: "Advanced Full Stack Development Student",
+    company: "Sheriyans Coding School",
+    duration: "Nov 2025 - Present",
     description:
-      "Built frontend of GenAI-powered PV Intake App with Next.js & TS for US client.",
+      "Currently learning advanced full stack concepts including DevOps, CI/CD pipelines, Three.js, DSA In JS, and modern development practices.",
   },
 ];
+
 
 function ExperienceItem({ exp, idx, start, end, scrollYProgress, layout }) {
   const progress = useTransform(scrollYProgress, [start, end], [0, 1]);
