@@ -121,7 +121,7 @@ const Home = ({ homeRef }) => {
                 View Work
               </a>
               <a
-                href="/dashrath.resume.pdf"
+                href="/Ankit-cv.pdf"
                 download
                 className="px-7 py-3 rounded-full text-lg font-medium text-white bg-white/10 border border-white/20 hover:scale-105 transition"
               >
