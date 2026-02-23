@@ -7,11 +7,12 @@ const ScrollToTopButton = ({ targetRef }) => {
   useEffect(() => {
     const handleScroll = () => {
       if (targetRef?.current) {
-        const rect = targetRef.current.getBoundingClientRect();
-        const homeBottom = rect.bottom;
-
-        
-        if (homeBottom <= 0) {
+        const el = targetRef.current;
+        const top = el.offsetTop;
+        const height = el.offsetHeight;
+        const scrolled = window.scrollY || window.pageYOffset;
+        // show when we've scrolled past the home section (its bottom has passed the top of viewport)
+        if (scrolled >= top + height - window.innerHeight) {
           setVisible(true);
         } else {
           setVisible(false);
@@ -42,7 +43,7 @@ const ScrollToTopButton = ({ targetRef }) => {
         </button>
       )}
 
-      <style jsx>{`
+      <style>{`
         .animate-drop {
           animation: drop 0.5s ease-out forwards;
         }

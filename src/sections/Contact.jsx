@@ -1,7 +1,25 @@
 import { useState } from "react";
 import ParticalBackground from "../components/ParticalBackground";
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import DeveloperDesk from "../components/DeveloperDesk";
+import { OrbitControls, Environment } from "@react-three/drei";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+
+function CanvasArea() {
+  return (
+    <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0.6, 3.2], fov: 35 }} style={{ width: "100%", height: "100%" }}>
+      <ambientLight intensity={0.6} />
+      <directionalLight position={[5, 5, 2]} intensity={0.8} castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} />
+      <Suspense fallback={null}>
+        <DeveloperDesk position={[0, -0.2, 0]} />
+        <Environment preset="city" />
+      </Suspense>
+      <OrbitControls enablePan={false} enableZoom={false} maxPolarAngle={Math.PI / 2.2} minPolarAngle={Math.PI / 3.5} />
+    </Canvas>
+  );
+}
 
 
 const SERVICEID = import.meta.env.VITE_SERVICE_ID;
@@ -16,6 +34,7 @@ const Contact = () => {
     budget: "",
     idea: "",
   });
+  const [copied, setCopied] = useState(false);
 
   const [error, seterror] = useState({});
   const [status, setstatus] = useState("");
@@ -78,24 +97,22 @@ const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <motion.img
-            src="/images/Astra.png"
-            alt="Contact"
-            className="w-72 md:w-140 rounded-2xl shadow-lg object-cover"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
+          <div className="w-72 md:w-140 rounded-2xl shadow-lg overflow-hidden" style={{ height: 420 }}>
+            <CanvasArea />
+          </div>
         </motion.div>
 
         <motion.div
-          className="w-full md:w-1/2 bg-white/5 rounded-2xl shadow-lg border border-white/10"
+          className="w-full md:w-1/2 bg-white/5 rounded-2xl shadow-lg border border-white/10 p-6"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl mb-6 font-bold">Let's Work Together</h2>
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="flex-1">
+              <h2 className="text-3xl mb-4 font-bold">Let's Work Together</h2>
 
-          <form className="flex flex-col gap-5" onSubmit={handlesubmit}>
+              <form className="flex flex-col gap-5" onSubmit={handlesubmit}>
             <div className="flex flex-col">
               <label className="mb-1">
                 Your Name <span className="text-red-600">*</span>
@@ -233,6 +250,43 @@ const Contact = () => {
               {status === "sending" ? "Sending..." : "Send Message"}
             </motion.button>
           </form>
+          </div>
+
+          {/* Right info column (email only) */}
+          <aside className="w-44 md:w-56 flex-shrink-0 bg-gradient-to-br from-blue-900/30 to-black/20 rounded-xl p-4 flex flex-col gap-4 items-start justify-center">
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <span className="inline-block w-3 h-3 rounded-full bg-teal-300 animate-pulse" />
+              </div>
+              <div>
+                <p className="text-xs text-white/70">Email</p>
+                <p className="text-sm font-medium break-all">ankitrathor272005@gmail.com</p>
+              </div>
+            </div>
+
+            <div className="mt-1 w-full">
+              <button
+                type="button"
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText("ankitrathor272005@gmail.com");
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                  } catch {
+                    setCopied(false);
+                  }
+                }}
+                className="w-full bg-white/5 hover:bg-white/10 text-sm text-white py-2 rounded-md transition"
+              >
+                {copied ? "Copied!" : "Copy Email"}
+              </button>
+            </div>
+
+            <div className="text-xs text-white/60">
+              <p>Available for freelance & remote work.</p>
+            </div>
+          </aside>
+        </div>
         </motion.div>
       </div>
       

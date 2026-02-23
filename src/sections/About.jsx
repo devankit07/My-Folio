@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Typewriter from "../components/Typewriter";
 
 const About = () => {
   const stats = [
@@ -50,20 +51,32 @@ const About = () => {
             <p className="mt-2 text-lg sm:text-xl text-gray-300 font-semibold">
               Full Stack Developer
             </p>
-            <p className="mt-4 text-gray-400 leading-relaxed text-base sm:text-lg md:max-w-3xl">
-              I’m a passionate Web Developer with a strong foundation in HTML,
-              CSS, JavaScript, and modern frameworks. I enjoy building clean,
-              responsive, and user-friendly web applications. Always eager to
-              learn new technologies and improve performance-driven solutions.
-            </p>
+            <Typewriter
+              text={
+                "I’m a passionate Web Developer with a strong foundation in HTML, CSS, JavaScript, and modern frameworks. I enjoy building clean, responsive, and user-friendly web applications. Always eager to learn new technologies and improve performance-driven solutions."
+              }
+              speed={28}
+            />
 
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-xl">
               {stats.map((item, i) => (
                 <motion.div
                   key={i}
-                  className="rounded-xl border border-white/10 bg-white/5 px-4 pt-3 text-center"
+                  className="group relative rounded-xl border border-white/10 bg-white/5 px-4 pt-3 text-center overflow-hidden"
+                  whileHover={{ scale: 1.04, y: -6 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 220, damping: 18 }}
                 >
-                  <div className="text-sm text-gray-300">
+                  {/* subtle animated gradient glow */}
+                  <span className="absolute inset-0 -z-10 rounded-xl opacity-0 group-hover:opacity-60 transition duration-500"
+                    style={{
+                      background:
+                        "linear-gradient(120deg, rgba(125,211,252,0.08), rgba(167,139,250,0.08) 40%, rgba(34,211,238,0.06))",
+                      filter: "blur(18px)",
+                    }}
+                  />
+
+                  <div className="text-sm text-gray-300 relative z-10">
                     <div className="text-base font-semibold">{item.label}</div>
                     {item.value}
                   </div>

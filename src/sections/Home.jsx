@@ -1,7 +1,11 @@
-import { useMemo, useEffect, useState, } from "react";
+import { useMemo, useEffect, useState, useRef, Suspense } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import ParticalBackground from "../components/ParticalBackground";
+import { Canvas } from "@react-three/fiber";
+import { ContactShadows } from "@react-three/drei";
+import CuteRobot from "../components/CuteRobot";
+
 
 const socials = [
   {
@@ -28,7 +32,8 @@ const glowVariants = {
 };
 
 const Home = ({ homeRef }) => {
-  
+  const rippleRef = useRef(null);
+
 
   const roles = useMemo(
     () => [
@@ -149,19 +154,48 @@ const Home = ({ homeRef }) => {
           </div>
         </div>
         <div className="relative hidden lg:block">
-          <motion.img
-            src="/images/avator.png"
-            alt="Ankit Rathor"
-            className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none drop-shadow-[0_0_35px_rgba(125,211,252,0.35)]"
+            <motion.div
+            className="absolute top-1/2 -translate-y-1/2 select-none pointer-events-none"
             style={{
-              right: "15px",
+              right: "-6vw",
               width: "min(45vw,780px)",
               maxHeight: "90vh",
+              height: "min(45vw,780px)",
             }}
             initial={{ opacity: 0, y: 40, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-          />
+          >
+            <Canvas
+              shadows
+              dpr={[1, 2]}
+              camera={{ position: [0, 0, 4], fov: 40 }}
+              style={{ width: "100%", height: "100%" }}
+            >
+              <ambientLight intensity={0.6} />
+              <spotLight
+                position={[5, 5, 5]}
+                angle={0.35}
+                penumbra={0.5}
+                intensity={1.2}
+                castShadow
+                shadow-mapSize-width={1024}
+                shadow-mapSize-height={1024}
+              />
+              <Suspense fallback={null}>
+                <CuteRobot />
+                <ContactShadows
+                  rotation-x={Math.PI / 2}
+                  position={[0, -0.75, 0]}
+                  opacity={0.5}
+                  width={3}
+                  height={3}
+                  blur={2}
+                  far={1.2}
+                />
+              </Suspense>
+            </Canvas>
+          </motion.div>
         </div>
       </div>
     </section>

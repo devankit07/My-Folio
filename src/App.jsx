@@ -8,7 +8,6 @@ import Experience from './sections/Experience.jsx';
 import Testimonials from './sections/Testimonials.jsx';
 import Contact from './sections/Contact.jsx';
 import Footer from './sections/Footer.jsx';
-import CustomCursor from './components/CustomCurso.jsx';
 import IntroAnimation from './components/IntroAnimation.jsx';
 import ScrollToTopButton from './components/ScrollToTopButton.jsx';
 
@@ -22,7 +21,6 @@ const App = () => {
 
       {introDone && (
         <div className="relative gradient text-white">
-          <CustomCursor />
           <Navbar />
           <Home homeRef={homeRef} /> 
           <ScrollToTopButton targetRef={homeRef} /> 

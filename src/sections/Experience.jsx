@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const experiences = 
@@ -62,32 +62,89 @@ function ExperienceItem({ exp, idx, start, end, scrollYProgress, layout }) {
   const isTop = idx % 2 === 0;
 
   return (
-    <section  className="relative flex-1 flex justify-center">
+    <section className="relative flex-1 flex justify-center">
       <motion.div
-        className="absolute top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white z-20"
+        className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white z-20"
         style={{ scale: progress, opacity }}
       />
 
       <motion.div
-        className={`absolute w-[2px] bg-white/40 ${
+        className={`absolute left-1/2 -translate-x-1/2 w-[2px] bg-white/40 ${
           isTop ? "top-[50%] h-16" : "bottom-[50%] h-16"
         }`}
         style={{ opacity }}
       />
 
+      {/* 3D tilt + hover reveal (centered within column) */}
       <motion.article
-        className={`absolute ${
-          isTop ? "top-[calc(50%+4rem)]" : "bottom-[calc(50%+4rem)]"
-        } bg-gray-900/90 border border-gray-700 rounded-xl p-6 w-[320px]`}
+        className={`absolute left-1/2 -translate-x-1/2 ${isTop ? "top-[calc(50%+4rem)]" : "bottom-[calc(50%+4rem)]"} bg-gray-900/90 border border-gray-700 rounded-xl p-6 w-[320px] will-change-transform`}
         style={{ opacity, y }}
       >
+        <div className="perspective-1000">
+          <InnerTiltCard exp={exp} />
+        </div>
+      </motion.article>
+    </section>
+  );
+}
+
+function InnerTiltCard({ exp }) {
+  const ref = useRef(null);
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const scale = useMotionValue(1);
+
+  function handleMove(e) {
+    const rect = ref.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const nx = (x / rect.width) * 2 - 1; // -1 .. 1
+    const ny = (y / rect.height) * 2 - 1;
+    rotateY.set(-nx * 10); // tilt left/right
+    rotateX.set(ny * 8); // tilt up/down
+  }
+
+  function handleLeave() {
+    rotateX.set(0);
+    rotateY.set(0);
+    scale.set(1);
+  }
+
+  function handleEnter() {
+    scale.set(1.03);
+  }
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      onMouseEnter={handleEnter}
+      style={{
+        rotateX,
+        rotateY,
+        scale,
+        transformStyle: "preserve-3d",
+        boxShadow: "0 6px 20px rgba(2,6,23,0.6)",
+      }}
+      className="relative bg-transparent rounded-xl"
+    >
+      <div className="absolute inset-0 rounded-xl pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-300"
+        style={{
+          background:
+            "linear-gradient(120deg, rgba(125,211,252,0.06), rgba(167,139,250,0.06) 40%, rgba(34,211,238,0.04))",
+          filter: "blur(12px)",
+        }}
+      />
+
+      <div className="relative z-10">
         <h3 className="text-lg font-semibold">{exp.role}</h3>
         <p className="text-sm text-gray-400">
           {exp.company} | {exp.duration}
         </p>
         <p className="text-sm text-gray-300 mt-2">{exp.description}</p>
-      </motion.article>
-    </section>
+      </div>
+    </motion.div>
   );
 }
 

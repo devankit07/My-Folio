@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 body {
-  font-family: "poppins", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 h1,
 h2 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 @layer utilities{
