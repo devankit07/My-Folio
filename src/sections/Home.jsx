@@ -38,9 +38,7 @@ const Home = ({ homeRef }) => {
   const roles = useMemo(
     () => [
       "Software Developer",
-      "MERN Stack Developer",
       "Full Stack Developer",
-      "React Developer",
     ],
     []
   );
